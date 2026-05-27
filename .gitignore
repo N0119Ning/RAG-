@@ -1,0 +1,17 @@
+outputs/
+logs/
+.claude/
+.agents/
+skills-lock.json
+*.npy
+.env
+__pycache__/
+*.pyc
+.venv/
+models/
+data/chroma_db/
+data/parsed/
+data/standards/
+*.db
+*.sqlite3
+*.sqlite3-journal
