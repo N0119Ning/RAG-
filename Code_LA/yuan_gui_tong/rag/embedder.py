@@ -22,7 +22,9 @@ class BgeM3EmbeddingFunction(EmbeddingFunction):
         return self._model
 
     def __call__(self, texts):
-        return self._lazy_model.encode(list(texts)).tolist()
+        return self._lazy_model.encode(
+            list(texts), batch_size=8, show_progress_bar=False
+        ).tolist()
 
 
 class EmbeddingManager:

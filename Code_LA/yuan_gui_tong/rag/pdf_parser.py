@@ -61,10 +61,19 @@ def _clean_text(text: str) -> str:
     return "\n".join(result)
 
 
+def _resolve_path(p: str) -> Path:
+    """Convert /e/... style bash paths to E:/... for Python on Windows."""
+    path = Path(p)
+    if not path.exists():
+        # Try Windows drive letter conversion
+        fixed = str(p).replace("/e/", "E:/").replace("/E/", "E:/")
+        path = Path(fixed)
+    return path
+
+
 class PDFParser:
-    def __init__(self, pdf_dir: str = "data/standards", skip_ocr: bool = True):
-        self.pdf_dir = Path(pdf_dir)
-        self.skip_ocr = skip_ocr
+    def __init__(self, pdf_dir: str = "data/standards"):
+        self.pdf_dir = _resolve_path(pdf_dir)
         self._ocr = None
 
     def _get_ocr(self):
@@ -72,14 +81,17 @@ class PDFParser:
             self._ocr = PaddleOCR(use_angle_cls=True, lang="ch")
         return self._ocr
 
+    def release_ocr(self):
+        """Release PaddleOCR model to free memory (~1 GB)."""
+        if self._ocr is not None:
+            del self._ocr
+            self._ocr = None
+            import gc; gc.collect()
+
     def _extract_page(self, page, ocr) -> str:
         text = page.get_text().strip()
         if _count_chinese(text) >= 50:
             return text
-
-        # skip OCR if configured
-        if self.skip_ocr:
-            return text if text else ""
 
         # Scanned page — render to image, run OCR
         pix = page.get_pixmap(dpi=200)
@@ -98,6 +110,22 @@ class PDFParser:
 
     def parse_pdf(self, pdf_path: Path) -> ParsedDocument:
         code, name = _parse_filename(pdf_path.name)
+
+        # Check OCR cache first — saves ~7 min per PDF on rebuild
+        cache_dir = self.pdf_dir.parent / "ocr_cache"
+        cache_dir.mkdir(exist_ok=True)
+        cache_path = cache_dir / f"{pdf_path.stem}.txt"
+        pdf_mtime = pdf_path.stat().st_mtime
+
+        if cache_path.exists() and cache_path.stat().st_mtime > pdf_mtime:
+            cached_text = cache_path.read_text(encoding="utf-8")
+            total_chinese = _count_chinese(cached_text)
+            avg = total_chinese / max(cached_text.count("## 第") or 1, 1)
+            return ParsedDocument(code, name, cached_text,
+                                  needs_ocr=(avg < 80),
+                                  total_pages=cached_text.count("## 第"),
+                                  text_chars=total_chinese)
+
         doc = fitz.open(str(pdf_path))
         total_pages = len(doc)
         ocr = self._get_ocr()
@@ -114,7 +142,9 @@ class PDFParser:
         doc.close()
         full_text = _clean_text("\n".join(markdown_parts))
 
-        # Determine if this PDF needs OCR: < 80 chinese chars per page on average
+        # Cache for future rebuilds
+        cache_path.write_text(full_text, encoding="utf-8")
+
         avg_chars_per_page = total_chinese / max(total_pages, 1)
         needs_ocr = avg_chars_per_page < 80
 

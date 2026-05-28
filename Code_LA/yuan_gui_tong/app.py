@@ -267,7 +267,7 @@ def main():
                                 from rag.pdf_parser import PDFParser
                                 from rag.clause_chunker import ClauseChunker
 
-                                parser = PDFParser(pdf_dir="data/standards", skip_ocr=False)
+                                parser = PDFParser(pdf_dir="data/standards")
                                 docs = parser.parse_all()
                                 # re-chunk only the OCR-enhanced docs
                                 chunker = ClauseChunker()
@@ -281,9 +281,9 @@ def main():
                                     texts.append(c.page_content)
                                     metadatas.append(c.metadata)
 
-                                batch_size = 500
-                                for start in range(0, len(texts), batch_size):
-                                    end = min(start + batch_size, len(texts))
+                                CHROMA_BATCH = 32
+                                for start in range(0, len(texts), CHROMA_BATCH):
+                                    end = min(start + CHROMA_BATCH, len(texts))
                                     st.session_state.kb.collection.upsert(
                                         ids=ids[start:end],
                                         documents=texts[start:end],
@@ -357,6 +357,7 @@ def main():
                         llm = LLMClient()
                         gen = AnswerGenerator(llm)
                         answer = gen.generate(prompt, results)
+                        answer = answer.replace("~", "～")
                         st.markdown(answer)
 
                         if results:
