@@ -365,6 +365,21 @@ def main():
                                 for r in results:
                                     render_ref_block(r.get("metadata", {}), r.get("content", ""))
 
+                        # Badcase report
+                        with st.expander("报告此回答有问题"):
+                            issue = st.selectbox(
+                                "问题类型",
+                                ["", "条款号编造/错误", "引用了错误的规范", "答案不完整/遗漏", "OCR乱码导致答非所问", "无结果/检索不到", "其他"],
+                                key=f"issue_{len(st.session_state.messages)}",
+                            )
+                            if st.button("提交报告", key=f"submit_{len(st.session_state.messages)}"):
+                                if issue:
+                                    from utils.badcase_logger import log_badcase
+                                    log_badcase(prompt, answer, results, issue)
+                                    st.success("已记录，谢谢反馈！")
+                                else:
+                                    st.warning("请选择问题类型")
+
                     st.session_state.messages.append({
                         "role": "assistant",
                         "content": answer,
