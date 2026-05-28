@@ -101,7 +101,7 @@ def init_session():
         "kb_building": False,
         "progress_log": [],
         "welcome_dismissed": False,
-        "highlight_msg": -1,
+        "pinned_pair": None,  # (user_msg, assistant_msg) to pin at top
     }
     for k, v in defaults.items():
         if k not in st.session_state:
@@ -162,10 +162,14 @@ def main():
             user_msgs = [(i, m) for i, m in enumerate(st.session_state.messages)
                          if m["role"] == "user"]
             for idx, msg in user_msgs[-20:]:
+                assistant_idx = idx + 1
+                has_answer = (assistant_idx < len(st.session_state.messages)
+                              and st.session_state.messages[assistant_idx]["role"] == "assistant")
                 label = msg["content"][:40] + ("..." if len(msg["content"]) > 40 else "")
                 btn_label = f"#{idx//2 + 1} {label}"
                 if st.button(btn_label, key=f"hist_{idx}", use_container_width=True):
-                    st.session_state.highlight_msg = idx
+                    if has_answer:
+                        st.session_state.pinned_pair = (idx, assistant_idx)
                     st.rerun()
 
         st.markdown("---")
@@ -228,15 +232,31 @@ def main():
         st.info("在侧边栏点击「加载已有」加载知识库，或「初始化」构建新库。")
         return
 
+    # Filter mode: show only pinned conversation
+    if st.session_state.pinned_pair is not None:
+        ui, ai = st.session_state.pinned_pair
+        msgs = st.session_state.messages
+        u_msg = msgs[ui]
+        a_msg = msgs[ai] if ai < len(msgs) else None
+        q_num = ui // 2 + 1
+
+        if st.button("← 返回全部对话", key="dismiss_pin"):
+            st.session_state.pinned_pair = None
+            st.rerun()
+
+        st.caption(f"定位到对话 #{q_num}")
+        with st.chat_message("user"):
+            st.markdown(u_msg["content"])
+        if a_msg:
+            with st.chat_message("assistant"):
+                st.markdown(a_msg.get("content", ""))
+                results = a_msg.get("results", [])
+                if results:
+                    for r in results:
+                        render_ref_block(r.get("metadata", {}), r.get("content", ""))
+        return
+
     for idx, msg in enumerate(st.session_state.messages):
-        # Highlight marker
-        if idx == st.session_state.highlight_msg:
-            st.markdown(
-                '<div style="background:#dcfce7;color:#166534;padding:4px 12px;'
-                'border-radius:6px;font-size:0.85rem;font-weight:bold;text-align:center;">'
-                '▼ 定位到对话 #' + str(idx // 2 + 1) + '</div>',
-                unsafe_allow_html=True,
-            )
         with st.chat_message(msg["role"]):
             if msg["role"] == "assistant" and "results" in msg:
                 st.markdown(msg["content"])
