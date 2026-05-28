@@ -19,64 +19,205 @@ st.set_page_config(
 
 st.markdown("""
 <style>
+    /* ======== Design Tokens ========
+       Primary: #2F6B55 (sage green)
+       Bg page: #F5F7F5 | Sidebar: #EEF3EF
+       Text: #1F2937 / #4B5563 / #9CA3AF
+       Radius: 24px card, 14px button/input
+       Transition: all .2s ease
+    */
+    :root {
+        --primary: #2F6B55;
+        --primary-hover: #255443;
+        --bg-page: #F5F7F5;
+        --bg-sidebar: #EEF3EF;
+        --bg-card: #FFFFFF;
+        --text-primary: #1F2937;
+        --text-secondary: #4B5563;
+        --text-muted: #9CA3AF;
+        --border: #E4E8E4;
+        --shadow-card: 0 10px 30px rgba(0,0,0,0.04);
+        --shadow-button: 0 4px 12px rgba(47,107,85,0.12);
+        --radius-card: 24px;
+        --radius-btn: 14px;
+    }
+
+    /* ======== Global page ======== */
+    [data-testid="stAppViewContainer"] {
+        background: var(--bg-page);
+    }
+    [data-testid="stHeader"] {
+        background: transparent;
+    }
+
+    /* ======== Title ======== */
     .main-title {
-        font-size: 1.6rem;
-        font-weight: bold;
-        color: #166534;
+        font-size: 1.8rem;
+        font-weight: 700;
+        color: var(--text-primary);
         text-align: center;
-        margin-bottom: 0.2rem;
+        margin-bottom: 0.3rem;
+        letter-spacing: 0.02em;
     }
     .sub-title {
-        font-size: 0.85rem;
-        color: #64748b;
-        text-align: center;
-        margin-bottom: 1rem;
-    }
-    .ref-block {
-        background: #f0fdf4;
-        border-left: 4px solid #22c55e;
-        border-radius: 8px;
-        padding: 12px 16px;
-        margin: 8px 0;
         font-size: 0.9rem;
+        color: var(--text-muted);
+        text-align: center;
+        margin-bottom: 2rem;
+    }
+
+    /* ======== Sidebar ======== */
+    [data-testid="stSidebar"] {
+        background-color: var(--bg-sidebar);
+    }
+    [data-testid="stSidebar"] .stMarkdown h3 {
+        color: var(--text-primary) !important;
+        font-weight: 600;
+        font-size: 0.95rem;
+    }
+
+    /* ======== Buttons ======== */
+    .stButton > button {
+        border-radius: var(--radius-btn) !important;
+        transition: all .2s ease !important;
+        font-weight: 500 !important;
+        height: 44px !important;
+    }
+    /* Primary */
+    .stButton > button[kind="primary"] {
+        background: var(--primary) !important;
+        border: none !important;
+        color: #fff !important;
+        box-shadow: var(--shadow-button) !important;
+    }
+    .stButton > button[kind="primary"]:hover {
+        background: var(--primary-hover) !important;
+        box-shadow: 0 6px 16px rgba(47,107,85,0.18) !important;
+        transform: translateY(-1px);
+    }
+    /* Secondary */
+    .stButton > button[kind="secondary"] {
+        background: var(--bg-card) !important;
+        border: 1px solid var(--border) !important;
+        color: var(--primary) !important;
+        height: 44px !important;
+    }
+    .stButton > button[kind="secondary"]:hover {
+        background: #F0F5F1 !important;
+        border-color: var(--primary) !important;
+    }
+    /* All buttons: uniform height */
+    .stButton button {
+        height: 44px !important;
+    }
+
+    /* ======== Chat Input ======== */
+    [data-testid="stChatInput"] textarea {
+        border: 1px solid var(--border) !important;
+        border-radius: var(--radius-btn) !important;
+        padding: 14px 18px !important;
+        transition: all .2s ease !important;
+        font-size: 0.95rem !important;
+    }
+    [data-testid="stChatInput"] textarea:focus {
+        border-color: var(--primary) !important;
+        box-shadow: 0 0 0 4px rgba(47,107,85,0.08) !important;
+    }
+    [data-testid="stChatInput"] textarea::placeholder {
+        color: #9CA3AF !important;
+    }
+
+    /* ======== Reference Block ======== */
+    .ref-block {
+        background: var(--bg-card);
+        border-left: 4px solid var(--primary);
+        border-radius: 12px;
+        padding: 16px 20px;
+        margin: 12px 0;
+        font-size: 0.9rem;
+        box-shadow: var(--shadow-card);
     }
     .ref-block .ref-header {
-        font-weight: bold;
-        color: #166534;
-        margin-bottom: 4px;
+        font-weight: 600;
+        color: var(--primary);
+        margin-bottom: 6px;
     }
-    [data-testid="stSidebar"] {
-        background-color: #f8fafc;
+    .ref-block .ref-body {
+        color: var(--text-secondary);
     }
-    .chat-link {
-        padding: 4px 8px;
-        border-radius: 4px;
-        cursor: pointer;
-        font-size: 0.8rem;
-        white-space: nowrap;
-        overflow: hidden;
-        text-overflow: ellipsis;
+
+    /* ======== Welcome Overlay ======== */
+    .welcome-overlay {
+        background: linear-gradient(135deg, #EEF5F0 0%, #E8F2EB 100%);
+        border: 1px solid var(--border);
+        border-radius: var(--radius-card);
+        padding: 48px 56px;
+        text-align: center;
+        margin-bottom: 32px;
+        box-shadow: var(--shadow-card);
     }
-    .chat-link:hover {
-        background: #e2e8f0;
+    .welcome-overlay h2 {
+        color: var(--text-primary);
+        font-weight: 700;
     }
+
+    /* ======== KB Status Dot ======== */
     .kb-status-dot {
         display: inline-block;
         width: 8px;
         height: 8px;
         border-radius: 50%;
-        margin-right: 4px;
+        margin-right: 6px;
     }
-    .kb-status-dot.ready { background: #22c55e; }
-    .kb-status-dot.busy { background: #f59e0b; }
-    .welcome-overlay {
-        background: linear-gradient(135deg, #f0fdf4 0%, #dcfce7 100%);
-        border: 2px solid #22c55e;
-        border-radius: 16px;
-        padding: 32px 40px;
-        text-align: center;
-        margin-bottom: 24px;
+    .kb-status-dot.ready { background: var(--primary); }
+    .kb-status-dot.busy { background: #D4A853; }
+
+    /* ======== Chat Messages ======== */
+    [data-testid="stChatMessage"] {
+        background: var(--bg-card) !important;
+        border-radius: var(--radius-btn) !important;
+        box-shadow: var(--shadow-card) !important;
+        padding: 16px 20px !important;
     }
+
+    /* ======== Containers / Cards ======== */
+    [data-testid="stVerticalBlockBorderWrapper"] {
+        background: var(--bg-card) !important;
+        border-radius: var(--radius-card) !important;
+        border: 1px solid var(--border) !important;
+        box-shadow: var(--shadow-card) !important;
+        padding: 24px !important;
+    }
+
+    /* ======== Expander ======== */
+    [data-testid="stExpander"] {
+        border: 1px solid var(--border) !important;
+        border-radius: 12px !important;
+    }
+
+    /* ======== Status / Info ======== */
+    [data-testid="stAlert"] {
+        border-radius: 12px !important;
+        border-left: 4px solid var(--primary) !important;
+    }
+    [data-testid="stAlert"][kind="info"] {
+        background: #EEF5F0 !important;
+        border-left-color: var(--primary) !important;
+    }
+    [data-testid="stAlert"][kind="info"] svg {
+        color: var(--primary) !important;
+    }
+    [data-testid="stAlert"][kind="info"] .stMarkdown p {
+        color: var(--text-secondary) !important;
+    }
+    [data-testid="stNotification"] {
+        border-left-color: var(--primary) !important;
+    }
+
+    /* ======== Scrollbar ======== */
+    ::-webkit-scrollbar { width: 6px; }
+    ::-webkit-scrollbar-track { background: transparent; }
+    ::-webkit-scrollbar-thumb { background: var(--border); border-radius: 3px; }
 </style>
 """, unsafe_allow_html=True)
 
@@ -108,6 +249,14 @@ def init_session():
             st.session_state[k] = v
 
 
+def check_model_cache() -> bool:
+    model_path = project_root / "models" / "BAAI" / "bge-m3"
+    required = ["config.json", "pytorch_model.bin", "tokenizer.json"]
+    if not model_path.exists():
+        return False
+    return all((model_path / f).exists() for f in required)
+
+
 def render_ref_block(meta: dict, content: str):
     code = meta.get("standard_code", "未知")
     name = meta.get("standard_name", "")
@@ -132,25 +281,52 @@ def main():
         unsafe_allow_html=True,
     )
 
-    # ---- Welcome overlay ----
+    # ---- Welcome page ----
     if not st.session_state.welcome_dismissed:
-        with st.container():
-            st.markdown("""
-            <div class="welcome-overlay">
-                <h2>欢迎使用园规通！</h2>
-                <p style="color:#374151;font-size:1rem;">
-                覆盖 <b>9本</b> 风景园林核心国标/行标<br>
-                <b>1168条</b> 条款 · PaddleOCR 扫描件精准识别<br>
-                BGE-M3 语义检索 + DeepSeek 精确引用回答
-                </p>
-            </div>
-            """, unsafe_allow_html=True)
-            col1, col2, col3 = st.columns([2, 1, 2])
-            with col2:
-                if st.button("开始使用", type="primary", use_container_width=True):
-                    st.session_state.welcome_dismissed = True
-                    st.rerun()
-            return
+        with st.status("正在检查系统状态...", expanded=True) as status:
+            # Check model
+            model_ok = check_model_cache()
+            st.write("BGE-M3 模型: " + ("已缓存" if model_ok else "未下载"))
+            # Check DB
+            db_ok = False
+            try:
+                from rag.knowledge_base import KnowledgeBase
+                kb_test = KnowledgeBase()
+                db_count = kb_test.get_stats()["total_clauses"]
+                db_ok = db_count > 0
+                st.write(f"知识库: {db_count} 条条款" if db_ok else "知识库: 空")
+            except Exception:
+                st.write("知识库: 未初始化")
+            status.update(label="系统检查完成", state="complete")
+
+        st.markdown("""
+        <div class="welcome-overlay">
+            <h2>欢迎使用园规通！</h2>
+            <p style="color:#374151;font-size:1rem;">
+            覆盖 <b>9本</b> 风景园林核心国标/行标<br>
+            <b>1168条</b> 条款 · PaddleOCR 扫描件精准识别<br>
+            BGE-M3 语义检索 + DeepSeek 精确引用回答
+            </p>
+        </div>
+        """, unsafe_allow_html=True)
+
+        if db_ok:
+            if st.button("进入问答", type="primary", use_container_width=True):
+                st.session_state.welcome_dismissed = True
+                st.rerun()
+        else:
+            st.markdown(
+                '<div style="background:#EEF5F0;border-left:4px solid #2F6B55;'
+                'border-radius:12px;padding:14px 20px;color:#4B5563;font-size:0.95rem;'
+                'text-align:center;margin:16px 0;">'
+                '首次使用请先初始化知识库</div>',
+                unsafe_allow_html=True,
+            )
+            c1, c2, c3 = st.columns([1, 2, 1])
+            with c2:
+                if st.button("初始化知识库", type="primary", use_container_width=True):
+                    load_and_build_kb()
+        return
 
     # ---- Sidebar ----
     with st.sidebar:
@@ -202,7 +378,7 @@ def main():
                          disabled=st.session_state.kb_building):
                 load_and_build_kb()
         with col2:
-            if st.button("加载已有", use_container_width=True,
+            if st.button("加载已有", type="secondary", use_container_width=True,
                          disabled=st.session_state.kb_building):
                 load_existing_kb()
 
@@ -229,7 +405,12 @@ def main():
         return
 
     if not st.session_state.kb_ready:
-        st.info("在侧边栏点击「加载已有」加载知识库，或「初始化」构建新库。")
+        st.markdown(
+            '<div style="background:#EEF5F0;border-left:4px solid #2F6B55;'
+            'border-radius:12px;padding:16px 20px;color:#4B5563;font-size:0.95rem;">'
+            '在侧边栏点击「加载已有」加载知识库，或「初始化」构建新库。</div>',
+            unsafe_allow_html=True,
+        )
         return
 
     # Filter mode: show only pinned conversation
