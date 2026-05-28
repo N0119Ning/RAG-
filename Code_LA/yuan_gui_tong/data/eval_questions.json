@@ -1,0 +1,585 @@
+[
+  {
+    "id": 1,
+    "query": "居住区绿地率最低要求是多少？",
+    "type": "数值查询",
+    "relevant_standards": [
+      "GB50180"
+    ],
+    "relevant_clauses": [
+      "3.1.1",
+      "3.1.2"
+    ],
+    "notes": "新建≥30%，旧区改建≥25%"
+  },
+  {
+    "id": 2,
+    "query": "消防车道的净宽度和净空高度有什么要求？",
+    "type": "数值查询",
+    "relevant_standards": [
+      "GB50016"
+    ],
+    "relevant_clauses": [
+      "7.1.8"
+    ],
+    "notes": "净宽和净高均不应小于4.0m"
+  },
+  {
+    "id": 3,
+    "query": "尽头式消防车道应设置什么？",
+    "type": "事实查询",
+    "relevant_standards": [
+      "GB50016"
+    ],
+    "relevant_clauses": [
+      "7.1.9"
+    ],
+    "notes": "回车道或回车场，≥12m×12m"
+  },
+  {
+    "id": 4,
+    "query": "乔木种植间距有什么规定？",
+    "type": "数值查询",
+    "relevant_standards": [
+      "GB51192",
+      "GB50420"
+    ],
+    "relevant_clauses": [
+      "7.1.5",
+      "5.1.1"
+    ],
+    "notes": "不宜小于4m，根据树种特性确定"
+  },
+  {
+    "id": 5,
+    "query": "轮椅坡道的最大坡度和高度限制是多少？",
+    "type": "数值查询",
+    "relevant_standards": [
+      "GB50763"
+    ],
+    "relevant_clauses": [
+      "3.4.4"
+    ],
+    "notes": "坡度1:20~1:8，高度0.30~1.20m"
+  },
+  {
+    "id": 6,
+    "query": "绿化栽植土壤有效土层厚度有什么要求？",
+    "type": "数值查询",
+    "relevant_standards": [
+      "CJJ82"
+    ],
+    "relevant_clauses": [
+      "4.1.1"
+    ],
+    "notes": "应符合表4.1.1规定"
+  },
+  {
+    "id": 7,
+    "query": "城市绿地率不应低于多少？",
+    "type": "数值查询",
+    "relevant_standards": [
+      "GB50420"
+    ],
+    "relevant_clauses": [
+      "4.1.1"
+    ],
+    "notes": "不应低于35%"
+  },
+  {
+    "id": 8,
+    "query": "行道树分枝点高度有什么要求？",
+    "type": "数值查询",
+    "relevant_standards": [
+      "GB50420",
+      "CJJ37"
+    ],
+    "relevant_clauses": [
+      "5.1.2"
+    ],
+    "notes": "不应低于2.5m"
+  },
+  {
+    "id": 9,
+    "query": "公园设计的基本规定有哪些？",
+    "type": "概述查询",
+    "relevant_standards": [
+      "GB51192"
+    ],
+    "relevant_clauses": [
+      "1.0.1",
+      "1.0.2"
+    ],
+    "notes": "适用范围、设计原则"
+  },
+  {
+    "id": 10,
+    "query": "建筑防火间距在什么情况下可以不限？",
+    "type": "条件查询",
+    "relevant_standards": [
+      "GB50016"
+    ],
+    "relevant_clauses": [],
+    "notes": "相邻较高一面为防火墙等情况"
+  },
+  {
+    "id": 11,
+    "query": "种植土检测有哪些指标要求？",
+    "type": "事实查询",
+    "relevant_standards": [
+      "CJJ82"
+    ],
+    "relevant_clauses": [
+      "4.1.2"
+    ],
+    "notes": "pH值、有机质含量等，不合格不得使用"
+  },
+  {
+    "id": 12,
+    "query": "无障碍出入口的平台的净深度不应小于多少？",
+    "type": "数值查询",
+    "relevant_standards": [
+      "GB50763"
+    ],
+    "relevant_clauses": [
+      "3.7.3"
+    ],
+    "notes": "不应小于1.50m"
+  },
+  {
+    "id": 13,
+    "query": "海绵城市建设在城市绿地设计中有什么要求？",
+    "type": "概述查询",
+    "relevant_standards": [
+      "GB50420"
+    ],
+    "relevant_clauses": [
+      "8.2"
+    ],
+    "notes": "雨水储存回用、下渗减排"
+  },
+  {
+    "id": 14,
+    "query": "园路纵坡最大不应超过多少？",
+    "type": "数值查询",
+    "relevant_standards": [
+      "GB51192"
+    ],
+    "relevant_clauses": [
+      "6.1.5"
+    ],
+    "notes": "支路和小路纵坡宜小于18%"
+  },
+  {
+    "id": 15,
+    "query": "建筑退让道路红线的最小距离如何确定？",
+    "type": "事实查询",
+    "relevant_standards": [
+      "GB50180"
+    ],
+    "relevant_clauses": [
+      "3.2.1"
+    ],
+    "notes": "应符合相关规定"
+  },
+  {
+    "id": 16,
+    "query": "苗木进场前应检查哪些内容？",
+    "type": "事实查询",
+    "relevant_standards": [
+      "CJJ82"
+    ],
+    "relevant_clauses": [
+      "4.2.1"
+    ],
+    "notes": "生长健壮、无病虫害、土球完整"
+  },
+  {
+    "id": 17,
+    "query": "公园停车场是否需要设置管理系统？",
+    "type": "事实查询",
+    "relevant_standards": [
+      "GB51192"
+    ],
+    "relevant_clauses": [
+      "10.5.3"
+    ],
+    "notes": "宜设置停车场管理系统"
+  },
+  {
+    "id": 18,
+    "query": "居住区道路路网密度不应小于多少？",
+    "type": "数值查询",
+    "relevant_standards": [
+      "GB50180"
+    ],
+    "relevant_clauses": [
+      "6.0.2"
+    ],
+    "notes": "不应小于8km/km²"
+  },
+  {
+    "id": 19,
+    "query": "无障碍楼梯有什么设计要求？",
+    "type": "概述查询",
+    "relevant_standards": [
+      "GB50763"
+    ],
+    "relevant_clauses": [],
+    "notes": "楼梯形式、宽度、踏步、扶手等方面方便行动及视觉障碍者使用"
+  },
+  {
+    "id": 20,
+    "query": "城市道路绿化植物与架空电力线路的最小垂直距离是多少？",
+    "type": "数值查询",
+    "relevant_standards": [
+      "CJJ37"
+    ],
+    "relevant_clauses": [],
+    "notes": "见相关表格规定"
+  },
+  {
+    "id": 21,
+    "query": "绿化施工期养护包括哪些内容？",
+    "type": "概述查询",
+    "relevant_standards": [
+      "CJJ82"
+    ],
+    "relevant_clauses": [],
+    "notes": "浇水、施肥、病虫害防治等"
+  },
+  {
+    "id": 22,
+    "query": "居住街坊内附属道路的路面宽度不应小于多少？",
+    "type": "数值查询",
+    "relevant_standards": [
+      "GB50180"
+    ],
+    "relevant_clauses": [
+      "6.0.4"
+    ],
+    "notes": "主要附属道路≥4.0m，其他≥2.5m"
+  },
+  {
+    "id": 23,
+    "query": "儿童活动场内植物种植有什么特殊要求？",
+    "type": "事实查询",
+    "relevant_standards": [
+      "GB51192"
+    ],
+    "relevant_clauses": [
+      "7.1.14"
+    ],
+    "notes": "萌发力强、直立生长，通透式种植便于看护"
+  },
+  {
+    "id": 24,
+    "query": "避难层有什么设置要求？",
+    "type": "事实查询",
+    "relevant_standards": [
+      "GB50016"
+    ],
+    "relevant_clauses": [
+      "5.5.23"
+    ],
+    "notes": "避难层(间)的相关规定"
+  },
+  {
+    "id": 25,
+    "query": "缘石坡道有什么设计要求？",
+    "type": "事实查询",
+    "relevant_standards": [
+      "GB50763"
+    ],
+    "relevant_clauses": [
+      "3.1.1",
+      "3.1.2"
+    ],
+    "notes": "坡面平整防滑，坡口与车行道高差≤10mm"
+  },
+  {
+    "id": 26,
+    "query": "公园水域游人容量按什么标准计算？",
+    "type": "数值查询",
+    "relevant_standards": [
+      "GB51192"
+    ],
+    "relevant_clauses": [
+      "3.4.4"
+    ],
+    "notes": "150~250 m²/人"
+  },
+  {
+    "id": 27,
+    "query": "种植地面设置雨水湿地有什么规定？",
+    "type": "事实查询",
+    "relevant_standards": [
+      "GB50420"
+    ],
+    "relevant_clauses": [
+      "8.2.5"
+    ],
+    "notes": "可在汇水面低洼处设置集水设施"
+  },
+  {
+    "id": 28,
+    "query": "公园游人容量计算公式是什么？",
+    "type": "公式查询",
+    "relevant_standards": [
+      "GB51192"
+    ],
+    "relevant_clauses": [
+      "3.4.2"
+    ],
+    "notes": "C = A / Am"
+  },
+  {
+    "id": 29,
+    "query": "集水设施的搭接缝有效宽度有什么要求？",
+    "type": "数值查询",
+    "relevant_standards": [
+      "CJJ82"
+    ],
+    "relevant_clauses": [],
+    "notes": "10cm~20cm"
+  },
+  {
+    "id": 30,
+    "query": "居住区公共绿地的人均面积有什么规定？",
+    "type": "数值查询",
+    "relevant_standards": [
+      "GB50180"
+    ],
+    "relevant_clauses": [
+      "4.0.4",
+      "4.0.7"
+    ],
+    "notes": "新区≥0.50㎡/人，旧区≥0.35㎡/人"
+  },
+  {
+    "id": 31,
+    "type": "数值查询",
+    "query": "园路主干道纵坡最大允许值是多少？超过多少婴儿车无法上行？",
+    "relevant_standards": [
+      "GB51192"
+    ],
+    "relevant_clauses": [
+      "6.1.5"
+    ],
+    "notes": "主路次路纵坡应小于12%，超12%作防滑处理"
+  },
+  {
+    "id": 32,
+    "type": "数值查询",
+    "query": "硬质铺装广场的排水坡度应控制在多少范围？",
+    "relevant_standards": [
+      "GB50420",
+      "GB51192"
+    ],
+    "relevant_clauses": [],
+    "notes": "避免雨后积水，一般1%-3%"
+  },
+  {
+    "id": 33,
+    "type": "事实查询",
+    "query": "消防车道与绿化带结合设计时，草坪路面是否满足消防通行要求？",
+    "relevant_standards": [
+      "GB50016",
+      "GB55014"
+    ],
+    "relevant_clauses": [
+      "7.1.8"
+    ],
+    "notes": "需满足承载力和净宽要求"
+  },
+  {
+    "id": 34,
+    "type": "事实查询",
+    "query": "消防登高操作场地采用植草砖等透水铺装是否影响验收？",
+    "relevant_standards": [
+      "GB50016",
+      "GB55014"
+    ],
+    "relevant_clauses": [],
+    "notes": "需满足承载力和平整度要求"
+  },
+  {
+    "id": 35,
+    "type": "数值查询",
+    "query": "临水湖岸水深达到多少必须设置防护栏杆？",
+    "relevant_standards": [
+      "GB51192",
+      "GB55014"
+    ],
+    "relevant_clauses": [],
+    "notes": "近岸2m内水深>0.7m需设护栏"
+  },
+  {
+    "id": 36,
+    "type": "数值查询",
+    "query": "汀步周围水域水深应控制在多少以下？",
+    "relevant_standards": [
+      "GB51192",
+      "GB55014"
+    ],
+    "relevant_clauses": [],
+    "notes": "不宜超过0.5m"
+  },
+  {
+    "id": 37,
+    "type": "数值查询",
+    "query": "亲水平台栏杆1.05米是否足够安全？底部有可踩踏面时如何计算有效高度？",
+    "relevant_standards": [
+      "GB50763",
+      "GB51192"
+    ],
+    "relevant_clauses": [],
+    "notes": "可踩踏面以上净高≥1.10m"
+  },
+  {
+    "id": 38,
+    "type": "数值查询",
+    "query": "无障碍坡道1:12和1:8坡度分别对应每米升高多少厘米？",
+    "relevant_standards": [
+      "GB50763"
+    ],
+    "relevant_clauses": [
+      "3.4.4"
+    ],
+    "notes": "1:12≈8.3cm/m, 1:8=12.5cm/m"
+  },
+  {
+    "id": 39,
+    "type": "事实查询",
+    "query": "儿童活动区种植夹竹桃、枸骨等有毒有刺植物，设计方是否担责？",
+    "relevant_standards": [
+      "GB51192",
+      "GB55014"
+    ],
+    "relevant_clauses": [
+      "7.1.14"
+    ],
+    "notes": "禁止种植有毒有刺植物"
+  },
+  {
+    "id": 40,
+    "type": "事实查询",
+    "query": "公园厕所污水可否直接接入市政污水管道？",
+    "relevant_standards": [
+      "GB51192"
+    ],
+    "relevant_clauses": [],
+    "notes": "应经化粪池处理后排入市政管网"
+  },
+  {
+    "id": 41,
+    "type": "事实查询",
+    "query": "下沉式绿地仅降低标高至路缘石以下十数厘米是否满足海绵要求？",
+    "relevant_standards": [
+      "GB50420",
+      "GB55014"
+    ],
+    "relevant_clauses": [
+      "8.2"
+    ],
+    "notes": "需配合土壤改良、溢流设施等"
+  },
+  {
+    "id": 42,
+    "type": "事实查询",
+    "query": "什么是园林绿化工程项目？",
+    "relevant_standards": [
+      "CJJT91",
+      "GB55014"
+    ],
+    "relevant_clauses": [],
+    "notes": "术语定义查询"
+  },
+  {
+    "id": 43,
+    "type": "事实查询",
+    "query": "园林绿化工程项目规范中的强制性条文有哪些？",
+    "relevant_standards": [
+      "GB55014"
+    ],
+    "relevant_clauses": [],
+    "notes": "全文强条，检验系统能否识别"
+  },
+  {
+    "id": 44,
+    "type": "事实查询",
+    "query": "场地频繁积水是否意味着标高与排水找坡方向存在矛盾？",
+    "relevant_standards": [
+      "GB50420",
+      "GB51192"
+    ],
+    "relevant_clauses": [],
+    "notes": "竖向设计与排水坡度协调"
+  },
+  {
+    "id": 45,
+    "type": "数值查询",
+    "query": "行道树树干中心至路缘石最小水平距离是多少？",
+    "relevant_standards": [
+      "CJJ37"
+    ],
+    "relevant_clauses": [],
+    "notes": "不宜小于0.75m"
+  },
+  {
+    "id": 46,
+    "type": "条件查询",
+    "query": "什么情况下需要设置消防车道？",
+    "relevant_standards": [
+      "GB50016",
+      "GB55014"
+    ],
+    "relevant_clauses": [
+      "7.1.2",
+      "7.1.3"
+    ],
+    "notes": "工厂仓库区、高层建筑等"
+  },
+  {
+    "id": 47,
+    "type": "概述查询",
+    "query": "风景园林基本术语标准主要包括哪些方面的术语定义？",
+    "relevant_standards": [
+      "CJJT91"
+    ],
+    "relevant_clauses": [],
+    "notes": "检验新标准检索"
+  },
+  {
+    "id": 48,
+    "type": "跨标准对比",
+    "query": "居住区绿地率和城市绿地率的要求有什么不同？",
+    "relevant_standards": [
+      "GB50180",
+      "GB50420"
+    ],
+    "relevant_clauses": [
+      "3.1.1",
+      "4.1.1"
+    ],
+    "notes": "≥30% vs ≥35%"
+  },
+  {
+    "id": 49,
+    "type": "无结果边界",
+    "query": "花岗岩铺装返碱泛白的原因及防治措施是什么？",
+    "relevant_standards": [],
+    "relevant_clauses": [],
+    "notes": "预期无结果——属材料标准，规范库不覆盖"
+  },
+  {
+    "id": 50,
+    "type": "数值查询",
+    "query": "园路夜间照明应如何确定路灯间距和光源功率？",
+    "relevant_standards": [
+      "GB51192"
+    ],
+    "relevant_clauses": [],
+    "notes": "避免暗区或照明盲区"
+  }
+]

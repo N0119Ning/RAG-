@@ -18,6 +18,17 @@ CHROMA_BATCH = 32
 _MODULE_DIR = Path(__file__).resolve().parent.parent
 
 
+def _parse_filename_static(filename: str) -> tuple:
+    """Parse standard code from filename without needing PDFParser."""
+    import re
+    stem = Path(filename).stem
+    parts = stem.split("_", 1)
+    if len(parts) == 2:
+        code = re.match(r"([A-Z]+\s*\d+)", parts[0])
+        return (code.group(1) if code else parts[0], parts[1])
+    return (stem, "")
+
+
 def _abs(path: str) -> str:
     p = Path(path)
     if p.is_absolute():
@@ -54,29 +65,44 @@ class KnowledgeBase:
     def collection(self):
         return self.retriever.collection
 
-    def build(self, pdf_dir: Optional[str] = None, progress_callback=None):
+    def build(self, pdf_dir: Optional[str] = None, progress_callback=None, force: bool = False):
         if pdf_dir:
             self.pdf_dir = _abs(pdf_dir)
             self.parser = PDFParser(pdf_dir=self.pdf_dir)
 
-        existing_count = self.collection.count()
-        if existing_count > 0:
-            print(f"[KnowledgeBase] 集合已存在 {existing_count} 条记录，跳过构建")
-            if progress_callback:
-                progress_callback("done", f"知识库已存在 {existing_count} 条，无需重建", existing_count, existing_count)
-            return
+        # Get already-indexed standards
+        existing_standards = set()
+        if self.collection.count() > 0:
+            all_meta = self.collection.get(include=["metadatas"])
+            existing_standards = {
+                m.get("standard_code", "")
+                for m in (all_meta.get("metadatas") or [])
+                if m and m.get("standard_code")
+            }
 
         pdfs = sorted(self.parser.pdf_dir.glob("*.pdf"))
-        total_pdfs = len(pdfs)
-        if total_pdfs == 0:
-            print("[KnowledgeBase] 未找到 PDF 文件")
+        # Filter: only process PDFs whose standard codes are NOT yet in the DB
+        new_pdfs = []
+        for pdf_file in pdfs:
+            code, _ = _parse_filename_static(pdf_file.name)
+            if code not in existing_standards:
+                new_pdfs.append(pdf_file)
+
+        if not new_pdfs:
+            existing_count = self.collection.count()
+            print(f"[KnowledgeBase] 所有 {len(pdfs)} 份规范已入库 ({existing_count} 条)，跳过构建")
+            if progress_callback:
+                progress_callback("done", f"已是最新 ({existing_count} 条)", existing_count, existing_count)
             return
+
+        print(f"[KnowledgeBase] 已入库: {len(existing_standards)} 份, 新增: {len(new_pdfs)} 份")
+        total_pdfs = len(new_pdfs)
 
         self.low_text_pdfs = []
         total_clauses = 0
-        clause_counter = 0
+        clause_counter = self.collection.count()
 
-        for pdf_idx, pdf_file in enumerate(pdfs, 1):
+        for pdf_idx, pdf_file in enumerate(new_pdfs, 1):
             if progress_callback:
                 progress_callback("parse", pdf_file.name, pdf_idx, total_pdfs)
 
