@@ -581,5 +581,121 @@
     ],
     "relevant_clauses": [],
     "notes": "避免暗区或照明盲区"
+  },
+  {
+    "id": 51,
+    "type": "数值查询",
+    "query": "行道树种植株距最小是多少？",
+    "relevant_standards": [
+      "CJJ37"
+    ],
+    "relevant_clauses": [],
+    "notes": "最小6.0m，冠幅小者4.0m"
+  },
+  {
+    "id": 52,
+    "type": "数值查询",
+    "query": "行道树进入机动车道路面的枝下净高不应小于多少？",
+    "relevant_standards": [
+      "CJJ37"
+    ],
+    "relevant_clauses": [],
+    "notes": "不应小于4.5m"
+  },
+  {
+    "id": 53,
+    "type": "事实查询",
+    "query": "道路绿化中分车绿带设置海绵设施有什么要求？",
+    "relevant_standards": [
+      "CJJ37"
+    ],
+    "relevant_clauses": [],
+    "notes": "小于2.5m时可设置海绵设施"
+  },
+  {
+    "id": 54,
+    "type": "跨标准对比",
+    "query": "行道树分枝点高度和公园乔木枝下净空的要求有什么不同？",
+    "relevant_standards": [
+      "GB50420",
+      "GB51192",
+      "CJJ37"
+    ],
+    "relevant_clauses": [
+      "5.1.2",
+      "7.1.13"
+    ],
+    "notes": "行道树≥2.5m vs 公园>2.2m"
+  },
+  {
+    "id": 55,
+    "type": "跨标准对比",
+    "query": "城市绿地率和居住区绿地率要求各是多少？为什么不同？",
+    "relevant_standards": [
+      "GB50420",
+      "GB50180"
+    ],
+    "relevant_clauses": [
+      "4.1.1",
+      "3.1.1"
+    ],
+    "notes": "城市≥35% vs 居住区≥30%"
+  },
+  {
+    "id": 56,
+    "type": "术语查询",
+    "query": "什么是居住街坊？",
+    "relevant_standards": [
+      "CJJT91",
+      "GB50180"
+    ],
+    "relevant_clauses": [],
+    "notes": "术语定义"
+  },
+  {
+    "id": 57,
+    "type": "术语查询",
+    "query": "风景园林中的竖向设计是什么意思？",
+    "relevant_standards": [
+      "CJJT91"
+    ],
+    "relevant_clauses": [],
+    "notes": "术语定义查询"
+  },
+  {
+    "id": 58,
+    "type": "术语查询",
+    "query": "游人容量的定义和计算公式是什么？",
+    "relevant_standards": [
+      "CJJT91",
+      "GB51192"
+    ],
+    "relevant_clauses": [
+      "3.4.2"
+    ],
+    "notes": "术语定义+公式"
+  },
+  {
+    "id": 59,
+    "type": "事实查询",
+    "query": "园林绿化工程项目规范中关于植物选择有什么强制要求？",
+    "relevant_standards": [
+      "GB55014"
+    ],
+    "relevant_clauses": [],
+    "notes": "全文强条"
+  },
+  {
+    "id": 60,
+    "type": "跨标准对比",
+    "query": "园林绿化施工验收和公园设计对苗木质量的要求有什么异同？",
+    "relevant_standards": [
+      "CJJ82",
+      "GB51192"
+    ],
+    "relevant_clauses": [
+      "4.2.1"
+    ],
+    "notes": "跨规范对比"
   }
 ]
