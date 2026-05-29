@@ -252,10 +252,39 @@ def init_session():
         "progress_log": [],
         "welcome_dismissed": False,
         "pinned_pair": None,  # (user_msg, assistant_msg) to pin at top
+        "verified_code": None,
     }
     for k, v in defaults.items():
         if k not in st.session_state:
             st.session_state[k] = v
+
+
+LOADED_INVITE = None
+
+
+def load_invite_codes():
+    global LOADED_INVITE
+    if LOADED_INVITE is None:
+        import json
+        path = project_root / "data" / "invite_codes.json"
+        LOADED_INVITE = json.load(open(path, encoding="utf-8")) if path.exists() else {"codes": [], "daily_limit": 20}
+    return LOADED_INVITE
+
+
+def get_daily_usage(code: str) -> int:
+    import sqlite3, time
+    db = project_root / "data" / "conversations.db"
+    if not db.exists():
+        return 0
+    conn = sqlite3.connect(str(db))
+    today = time.strftime("%Y-%m-%d")
+    row = conn.execute(
+        "SELECT COUNT(*) FROM conversations WHERE date(timestamp)=? AND invite_code=?",
+        (today, code),
+    ).fetchone()
+    conn.close()
+    return row[0] if row else 0
+
 
 
 def check_model_cache() -> bool:
@@ -264,6 +293,45 @@ def check_model_cache() -> bool:
     if not model_path.exists():
         return False
     return all((model_path / f).exists() for f in required)
+
+
+def _render_thumbs(msg_idx: int):
+    """Render like/dislike buttons for an assistant message."""
+    fkey = f"feedback_{msg_idx}"
+    if fkey not in st.session_state:
+        st.session_state[fkey] = None
+    fstate = st.session_state[fkey]
+
+    if fstate is None:
+        c1, c2, c3 = st.columns([1, 1, 6])
+        with c1:
+            if st.button("👍", key=f"like_{msg_idx}", help="有帮助"):
+                st.session_state[fkey] = "like"
+                st.rerun()
+        with c2:
+            if st.button("👎", key=f"dislike_{msg_idx}", help="有问题"):
+                st.session_state[fkey] = "dislike"
+                st.rerun()
+    elif fstate == "like":
+        st.caption("👍 感谢反馈！")
+    elif fstate == "dislike":
+        fb = st.text_area("请描述具体问题", placeholder="例如：条款号错误、答案不完整...", key=f"text_{msg_idx}", label_visibility="collapsed")
+        c1, c2, _ = st.columns([1, 1, 4])
+        with c1:
+            if st.button("提交", key=f"submit_{msg_idx}"):
+                from utils.badcase_logger import log_badcase
+                msgs = st.session_state.messages
+                q = msgs[msg_idx - 1]["content"] if msg_idx > 0 else ""
+                a = msgs[msg_idx]["content"]
+                log_badcase(q, a, msgs[msg_idx].get("results", []), fb or "用户点踩")
+                st.session_state[fkey] = "done"
+                st.rerun()
+        with c2:
+            if st.button("取消", key=f"cancel_{msg_idx}"):
+                st.session_state[fkey] = None
+                st.rerun()
+    elif fstate == "done":
+        st.caption("已收到反馈，谢谢！")
 
 
 def render_ref_block(meta: dict, content: str):
@@ -283,6 +351,29 @@ def render_ref_block(meta: dict, content: str):
 
 def main():
     init_session()
+
+    # ---- Invite code gate ----
+    if not st.session_state.verified_code:
+        invite = load_invite_codes()
+        st.markdown('<div class="main-title">园规通</div>', unsafe_allow_html=True)
+        st.markdown('<div class="sub-title">风景园林设计规范智能助手</div>', unsafe_allow_html=True)
+        st.markdown("")
+        col1, col2, col3 = st.columns([1, 2, 1])
+        with col2:
+            code_input = st.text_input("请输入邀请码", placeholder="YGT-XXXXXX", max_chars=10)
+            if st.button("验证邀请码", type="primary", use_container_width=True):
+                code = code_input.strip().upper()
+                if code in invite.get("codes", []):
+                    usage = get_daily_usage(code)
+                    limit = invite.get("daily_limit", 20)
+                    if usage >= limit:
+                        st.error(f"今日已用 {usage}/{limit} 次，请明天再来")
+                    else:
+                        st.session_state.verified_code = code
+                        st.rerun()
+                else:
+                    st.error("邀请码无效")
+        return
 
     st.markdown('<div class="main-title">园规通</div>', unsafe_allow_html=True)
     st.markdown(
@@ -450,75 +541,58 @@ def main():
         with st.chat_message(msg["role"]):
             if msg["role"] == "assistant" and "results" in msg:
                 st.markdown(msg["content"])
-                n_results = len(msg["results"])
-                with st.expander(f"查看 {n_results} 条引用来源"):
-                    st.caption(f"检索到 {n_results} 条相关条款，按相似度排序")
-                    for i, r in enumerate(msg["results"], 1):
-                        sim = r.get("similarity", 0)
-                        st.caption(f"#{i} 相似度: {sim:.2%}")
-                        render_ref_block(r.get("metadata", {}), r.get("content", ""))
+                _render_thumbs(idx)
             else:
                 st.markdown(msg["content"])
 
     if prompt := st.chat_input("输入规范查询问题，如：居住区绿地率最低要求是多少？"):
-        st.session_state.messages.append({"role": "user", "content": prompt})
-        with st.chat_message("user"):
-            st.markdown(prompt)
+        # Daily limit check
+        invite = load_invite_codes()
+        usage = get_daily_usage(st.session_state.verified_code)
+        limit = invite.get("daily_limit", 20)
+        if usage >= limit:
+            st.error(f"今日已提问 {usage}/{limit} 次，请明天再来")
+        else:
+            st.session_state.messages.append({"role": "user", "content": prompt})
+            with st.chat_message("user"):
+                st.markdown(prompt)
 
-        with st.chat_message("assistant"):
-            status = st.status("处理中...", expanded=False)
-            try:
-                status.update(label="正在检索...", state="running")
-                results = st.session_state.kb.search(prompt, top_k=5)
+            with st.chat_message("assistant"):
+                    status = st.status("处理中...", expanded=False)
+                    try:
+                        status.update(label="正在检索...", state="running")
+                        results = st.session_state.kb.search(prompt, top_k=5)
 
-                status.update(label="正在生成回答...", state="running")
-                from utils.llm_client import LLMClient
-                from utils.answer_generator import AnswerGenerator
+                        status.update(label="正在生成回答...", state="running")
+                        from utils.llm_client import LLMClient
+                        from utils.answer_generator import AnswerGenerator
 
-                llm = LLMClient()
-                gen = AnswerGenerator(llm)
-                answer = gen.generate(prompt, results)
-                answer = answer.replace("~", "～")
-                status.update(label="完成", state="complete")
+                        llm = LLMClient()
+                        gen = AnswerGenerator(llm)
+                        answer = gen.generate(prompt, results)
+                        answer = answer.replace("~", "～")
+                        status.update(label="完成", state="complete")
 
-                st.markdown(answer)
+                        st.markdown(answer)
 
-                if results:
-                    with st.expander(f"查看 {len(results)} 条引用来源"):
-                        for r in results:
-                            render_ref_block(r.get("metadata", {}), r.get("content", ""))
+                        st.session_state.messages.append({
+                            "role": "assistant",
+                            "content": answer,
+                            "results": results,
+                        })
+                        from utils.conversation_logger import log
+                        log(prompt, answer, results, invite_code=st.session_state.verified_code or "")
+                        st.rerun()
 
-                with st.expander("报告此回答有问题"):
-                    issue = st.selectbox(
-                        "问题类型",
-                        ["", "条款号编造/错误", "引用了错误的规范",
-                         "答案不完整/遗漏", "OCR乱码导致答非所问",
-                         "无结果/检索不到", "其他"],
-                        key=f"issue_{len(st.session_state.messages)}",
-                    )
-                    if st.button("提交报告", key=f"submit_{len(st.session_state.messages)}"):
-                        if issue:
-                            from utils.badcase_logger import log_badcase
-                            log_badcase(prompt, answer, results, issue)
-                            st.success("已记录，谢谢反馈！")
-                        else:
-                            st.warning("请选择问题类型")
-
-                st.session_state.messages.append({
-                    "role": "assistant",
-                    "content": answer,
-                    "results": results,
-                })
-
-            except Exception as e:
-                status.update(label=f"失败", state="error")
-                error_msg = f"查询失败: {e}"
-                st.error(error_msg)
-                st.session_state.messages.append({
-                    "role": "assistant",
-                    "content": error_msg,
-                    "results": [],
-                })
+                    except Exception as e:
+                        status.update(label=f"失败", state="error")
+                        error_msg = f"查询失败: {e}"
+                        st.error(error_msg)
+                        st.session_state.messages.append({
+                            "role": "assistant",
+                            "content": error_msg,
+                            "results": [],
+                        })
 
 
 def load_and_build_kb():
