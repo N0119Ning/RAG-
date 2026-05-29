@@ -106,9 +106,18 @@ st.markdown("""
         background: #F0F5F1 !important;
         border-color: var(--primary) !important;
     }
-    /* All buttons: uniform height */
+    /* All buttons: uniform height + text overflow */
     .stButton button {
         height: 44px !important;
+        white-space: nowrap !important;
+        overflow: hidden !important;
+        text-overflow: ellipsis !important;
+        display: block !important;
+    }
+    .stButton button p {
+        white-space: nowrap !important;
+        overflow: hidden !important;
+        text-overflow: ellipsis !important;
     }
 
     /* ======== Chat Input ======== */
@@ -341,7 +350,7 @@ def main():
                 assistant_idx = idx + 1
                 has_answer = (assistant_idx < len(st.session_state.messages)
                               and st.session_state.messages[assistant_idx]["role"] == "assistant")
-                label = msg["content"][:40] + ("..." if len(msg["content"]) > 40 else "")
+                label = msg["content"][:20] + ("..." if len(msg["content"]) > 20 else "")
                 btn_label = f"#{idx//2 + 1} {label}"
                 if st.button(btn_label, key=f"hist_{idx}", use_container_width=True):
                     if has_answer:
