@@ -1,0 +1,1108 @@
+{
+  "summary": {
+    "recall": 0.894,
+    "precision": 0.536,
+    "mrr": 0.829,
+    "ndcg": 0.827
+  },
+  "details": [
+    {
+      "id": 1,
+      "query": "居住区绿地率最低要求是多少？",
+      "recall": 1.0,
+      "precision": 0.5,
+      "mrr": 1.0,
+      "ndcg": 1.0,
+      "retrieved": [
+        "GB50180",
+        "GB50180",
+        "GB50180",
+        "GB50180",
+        "GB55014"
+      ],
+      "relevant": [
+        "GB50180"
+      ]
+    },
+    {
+      "id": 2,
+      "query": "消防车道的净宽度和净空高度有什么要求？",
+      "recall": 1.0,
+      "precision": 1.0,
+      "mrr": 1.0,
+      "ndcg": 1.0,
+      "retrieved": [
+        "GB50016",
+        "GB50016",
+        "GB50016",
+        "GB50016",
+        "GB50016"
+      ],
+      "relevant": [
+        "GB50016"
+      ]
+    },
+    {
+      "id": 3,
+      "query": "尽头式消防车道应设置什么？",
+      "recall": 1.0,
+      "precision": 1.0,
+      "mrr": 1.0,
+      "ndcg": 1.0,
+      "retrieved": [
+        "GB50016",
+        "GB50016",
+        "GB50016",
+        "GB50016",
+        "GB50016"
+      ],
+      "relevant": [
+        "GB50016"
+      ]
+    },
+    {
+      "id": 4,
+      "query": "乔木种植间距有什么规定？",
+      "recall": 0.5,
+      "precision": 0.5,
+      "mrr": 1.0,
+      "ndcg": 0.613,
+      "retrieved": [
+        "GB51192",
+        "GB51192",
+        "GB51192",
+        "CJJ37",
+        "CJJ37"
+      ],
+      "relevant": [
+        "GB51192",
+        "GB50420"
+      ]
+    },
+    {
+      "id": 5,
+      "query": "轮椅坡道的最大坡度和高度限制是多少？",
+      "recall": 1.0,
+      "precision": 1.0,
+      "mrr": 1.0,
+      "ndcg": 1.0,
+      "retrieved": [
+        "GB50763",
+        "GB50763",
+        "GB50763",
+        "GB50763",
+        "GB50763"
+      ],
+      "relevant": [
+        "GB50763"
+      ]
+    },
+    {
+      "id": 6,
+      "query": "绿化栽植土壤有效土层厚度有什么要求？",
+      "recall": 1.0,
+      "precision": 0.333,
+      "mrr": 0.5,
+      "ndcg": 0.631,
+      "retrieved": [
+        "CJJ37",
+        "CJJ82",
+        "GB51192",
+        "CJJ82",
+        "CJJ82"
+      ],
+      "relevant": [
+        "CJJ82"
+      ]
+    },
+    {
+      "id": 7,
+      "query": "城市绿地率不应低于多少？",
+      "recall": 1.0,
+      "precision": 0.25,
+      "mrr": 0.5,
+      "ndcg": 0.631,
+      "retrieved": [
+        "GB55014",
+        "GB55014",
+        "GB50420",
+        "CJJT91",
+        "CJJ37"
+      ],
+      "relevant": [
+        "GB50420"
+      ]
+    },
+    {
+      "id": 8,
+      "query": "行道树分枝点高度有什么要求？",
+      "recall": 0.5,
+      "precision": 0.333,
+      "mrr": 1.0,
+      "ndcg": 0.613,
+      "retrieved": [
+        "CJJ37",
+        "GB55014",
+        "CJJ37",
+        "CJJ82",
+        "CJJ82"
+      ],
+      "relevant": [
+        "GB50420",
+        "CJJ37"
+      ]
+    },
+    {
+      "id": 9,
+      "query": "公园设计的基本规定有哪些？",
+      "recall": 1.0,
+      "precision": 0.5,
+      "mrr": 1.0,
+      "ndcg": 1.0,
+      "retrieved": [
+        "GB51192",
+        "GB55014",
+        "GB51192",
+        "GB51192",
+        "GB51192"
+      ],
+      "relevant": [
+        "GB51192"
+      ]
+    },
+    {
+      "id": 10,
+      "query": "建筑防火间距在什么情况下可以不限？",
+      "recall": 1.0,
+      "precision": 1.0,
+      "mrr": 1.0,
+      "ndcg": 1.0,
+      "retrieved": [
+        "GB50016",
+        "GB50016",
+        "GB50016",
+        "GB50016",
+        "GB50016"
+      ],
+      "relevant": [
+        "GB50016"
+      ]
+    },
+    {
+      "id": 11,
+      "query": "种植土检测有哪些指标要求？",
+      "recall": 1.0,
+      "precision": 0.5,
+      "mrr": 1.0,
+      "ndcg": 1.0,
+      "retrieved": [
+        "CJJ82",
+        "CJJ82",
+        "CJJ82",
+        "GB51192",
+        "CJJ82"
+      ],
+      "relevant": [
+        "CJJ82"
+      ]
+    },
+    {
+      "id": 12,
+      "query": "无障碍出入口的平台的净深度不应小于多少？",
+      "recall": 1.0,
+      "precision": 1.0,
+      "mrr": 1.0,
+      "ndcg": 1.0,
+      "retrieved": [
+        "GB50763",
+        "GB50763",
+        "GB50763",
+        "GB50763",
+        "GB50763"
+      ],
+      "relevant": [
+        "GB50763"
+      ]
+    },
+    {
+      "id": 13,
+      "query": "海绵城市建设在城市绿地设计中有什么要求？",
+      "recall": 1.0,
+      "precision": 0.333,
+      "mrr": 1.0,
+      "ndcg": 1.0,
+      "retrieved": [
+        "GB50420",
+        "CJJ37",
+        "CJJ37",
+        "GB50420",
+        "CJJT91"
+      ],
+      "relevant": [
+        "GB50420"
+      ]
+    },
+    {
+      "id": 14,
+      "query": "园路纵坡最大不应超过多少？",
+      "recall": 1.0,
+      "precision": 0.25,
+      "mrr": 1.0,
+      "ndcg": 1.0,
+      "retrieved": [
+        "GB51192",
+        "GB51192",
+        "GB50420",
+        "GB55014",
+        "GB50763"
+      ],
+      "relevant": [
+        "GB51192"
+      ]
+    },
+    {
+      "id": 15,
+      "query": "建筑退让道路红线的最小距离如何确定？",
+      "recall": 1.0,
+      "precision": 0.333,
+      "mrr": 1.0,
+      "ndcg": 1.0,
+      "retrieved": [
+        "GB50180",
+        "CJJ37",
+        "GB50180",
+        "GB50016",
+        "GB50016"
+      ],
+      "relevant": [
+        "GB50180"
+      ]
+    },
+    {
+      "id": 16,
+      "query": "苗木进场前应检查哪些内容？",
+      "recall": 1.0,
+      "precision": 0.5,
+      "mrr": 1.0,
+      "ndcg": 1.0,
+      "retrieved": [
+        "CJJ82",
+        "CJJ82",
+        "GB51192",
+        "CJJ82",
+        "CJJ82"
+      ],
+      "relevant": [
+        "CJJ82"
+      ]
+    },
+    {
+      "id": 17,
+      "query": "公园停车场是否需要设置管理系统？",
+      "recall": 1.0,
+      "precision": 1.0,
+      "mrr": 1.0,
+      "ndcg": 1.0,
+      "retrieved": [
+        "GB51192",
+        "GB51192",
+        "GB51192",
+        "GB51192",
+        "GB51192"
+      ],
+      "relevant": [
+        "GB51192"
+      ]
+    },
+    {
+      "id": 18,
+      "query": "居住区道路路网密度不应小于多少？",
+      "recall": 1.0,
+      "precision": 0.25,
+      "mrr": 1.0,
+      "ndcg": 1.0,
+      "retrieved": [
+        "GB50180",
+        "GB51192",
+        "GB50180",
+        "GB50420",
+        "GB55014"
+      ],
+      "relevant": [
+        "GB50180"
+      ]
+    },
+    {
+      "id": 19,
+      "query": "无障碍楼梯有什么设计要求？",
+      "recall": 1.0,
+      "precision": 1.0,
+      "mrr": 1.0,
+      "ndcg": 1.0,
+      "retrieved": [
+        "GB50763",
+        "GB50763",
+        "GB50763",
+        "GB50763",
+        "GB50763"
+      ],
+      "relevant": [
+        "GB50763"
+      ]
+    },
+    {
+      "id": 20,
+      "query": "城市道路绿化植物与架空电力线路的最小垂直距离是多少？",
+      "recall": 1.0,
+      "precision": 0.333,
+      "mrr": 0.333,
+      "ndcg": 0.5,
+      "retrieved": [
+        "GB55014",
+        "GB51192",
+        "GB51192",
+        "GB51192",
+        "CJJ37"
+      ],
+      "relevant": [
+        "CJJ37"
+      ]
+    },
+    {
+      "id": 21,
+      "query": "绿化施工期养护包括哪些内容？",
+      "recall": 1.0,
+      "precision": 0.333,
+      "mrr": 1.0,
+      "ndcg": 1.0,
+      "retrieved": [
+        "CJJ82",
+        "GB55014",
+        "CJJ82",
+        "CJJ82",
+        "CJJ37"
+      ],
+      "relevant": [
+        "CJJ82"
+      ]
+    },
+    {
+      "id": 22,
+      "query": "居住街坊内附属道路的路面宽度不应小于多少？",
+      "recall": 1.0,
+      "precision": 1.0,
+      "mrr": 1.0,
+      "ndcg": 1.0,
+      "retrieved": [
+        "GB50180",
+        "GB50180",
+        "GB50180",
+        "GB50180",
+        "GB50180"
+      ],
+      "relevant": [
+        "GB50180"
+      ]
+    },
+    {
+      "id": 23,
+      "query": "儿童活动场内植物种植有什么特殊要求？",
+      "recall": 1.0,
+      "precision": 0.25,
+      "mrr": 1.0,
+      "ndcg": 1.0,
+      "retrieved": [
+        "GB51192",
+        "GB50763",
+        "GB55014",
+        "GB50420",
+        "GB51192"
+      ],
+      "relevant": [
+        "GB51192"
+      ]
+    },
+    {
+      "id": 24,
+      "query": "避难层有什么设置要求？",
+      "recall": 1.0,
+      "precision": 1.0,
+      "mrr": 1.0,
+      "ndcg": 1.0,
+      "retrieved": [
+        "GB50016",
+        "GB50016",
+        "GB50016",
+        "GB50016",
+        "GB50016"
+      ],
+      "relevant": [
+        "GB50016"
+      ]
+    },
+    {
+      "id": 25,
+      "query": "缘石坡道有什么设计要求？",
+      "recall": 1.0,
+      "precision": 0.5,
+      "mrr": 1.0,
+      "ndcg": 1.0,
+      "retrieved": [
+        "GB50763",
+        "GB50763",
+        "GB50763",
+        "GB51192",
+        "GB50763"
+      ],
+      "relevant": [
+        "GB50763"
+      ]
+    },
+    {
+      "id": 26,
+      "query": "公园水域游人容量按什么标准计算？",
+      "recall": 1.0,
+      "precision": 0.5,
+      "mrr": 1.0,
+      "ndcg": 1.0,
+      "retrieved": [
+        "GB51192",
+        "GB51192",
+        "GB51192",
+        "GB55014",
+        "GB51192"
+      ],
+      "relevant": [
+        "GB51192"
+      ]
+    },
+    {
+      "id": 27,
+      "query": "种植地面设置雨水湿地有什么规定？",
+      "recall": 1.0,
+      "precision": 0.333,
+      "mrr": 1.0,
+      "ndcg": 1.0,
+      "retrieved": [
+        "GB50420",
+        "GB50420",
+        "CJJ82",
+        "CJJ82",
+        "GB55014"
+      ],
+      "relevant": [
+        "GB50420"
+      ]
+    },
+    {
+      "id": 28,
+      "query": "公园游人容量计算公式是什么？",
+      "recall": 1.0,
+      "precision": 0.5,
+      "mrr": 1.0,
+      "ndcg": 1.0,
+      "retrieved": [
+        "GB51192",
+        "GB51192",
+        "GB51192",
+        "GB51192",
+        "GB55014"
+      ],
+      "relevant": [
+        "GB51192"
+      ]
+    },
+    {
+      "id": 29,
+      "query": "集水设施的搭接缝有效宽度有什么要求？",
+      "recall": 1.0,
+      "precision": 0.333,
+      "mrr": 0.333,
+      "ndcg": 0.5,
+      "retrieved": [
+        "GB50016",
+        "GB50180",
+        "CJJ82",
+        "GB50016",
+        "CJJ82"
+      ],
+      "relevant": [
+        "CJJ82"
+      ]
+    },
+    {
+      "id": 30,
+      "query": "居住区公共绿地的人均面积有什么规定？",
+      "recall": 1.0,
+      "precision": 0.5,
+      "mrr": 1.0,
+      "ndcg": 1.0,
+      "retrieved": [
+        "GB50180",
+        "GB50180",
+        "CJJT91",
+        "GB50180",
+        "GB50180"
+      ],
+      "relevant": [
+        "GB50180"
+      ]
+    },
+    {
+      "id": 31,
+      "query": "园路主干道纵坡最大允许值是多少？超过多少婴儿车无法上行？",
+      "recall": 1.0,
+      "precision": 0.333,
+      "mrr": 1.0,
+      "ndcg": 1.0,
+      "retrieved": [
+        "GB51192",
+        "GB51192",
+        "GB51192",
+        "GB50420",
+        "GB50763"
+      ],
+      "relevant": [
+        "GB51192"
+      ]
+    },
+    {
+      "id": 32,
+      "query": "硬质铺装广场的排水坡度应控制在多少范围？",
+      "recall": 0.5,
+      "precision": 0.333,
+      "mrr": 0.333,
+      "ndcg": 0.307,
+      "retrieved": [
+        "GB55014",
+        "CJJ82",
+        "GB51192",
+        "GB51192",
+        "GB51192"
+      ],
+      "relevant": [
+        "GB50420",
+        "GB51192"
+      ]
+    },
+    {
+      "id": 33,
+      "query": "消防车道与绿化带结合设计时，草坪路面是否满足消防通行要求？",
+      "recall": 1.0,
+      "precision": 0.667,
+      "mrr": 0.5,
+      "ndcg": 0.693,
+      "retrieved": [
+        "GB50420",
+        "GB50016",
+        "GB50016",
+        "GB55014",
+        "GB50016"
+      ],
+      "relevant": [
+        "GB50016",
+        "GB55014"
+      ]
+    },
+    {
+      "id": 34,
+      "query": "消防登高操作场地采用植草砖等透水铺装是否影响验收？",
+      "recall": 0.5,
+      "precision": 1.0,
+      "mrr": 1.0,
+      "ndcg": 1.0,
+      "retrieved": [
+        "GB50016",
+        "GB50016",
+        "GB50016",
+        "GB50016",
+        "GB50016"
+      ],
+      "relevant": [
+        "GB50016",
+        "GB55014"
+      ]
+    },
+    {
+      "id": 35,
+      "query": "临水湖岸水深达到多少必须设置防护栏杆？",
+      "recall": 1.0,
+      "precision": 0.667,
+      "mrr": 0.5,
+      "ndcg": 0.693,
+      "retrieved": [
+        "GB50420",
+        "GB55014",
+        "GB55014",
+        "GB51192",
+        "GB55014"
+      ],
+      "relevant": [
+        "GB51192",
+        "GB55014"
+      ]
+    },
+    {
+      "id": 36,
+      "query": "汀步周围水域水深应控制在多少以下？",
+      "recall": 1.0,
+      "precision": 0.667,
+      "mrr": 1.0,
+      "ndcg": 0.92,
+      "retrieved": [
+        "GB51192",
+        "GB50420",
+        "GB55014",
+        "GB50420",
+        "GB55014"
+      ],
+      "relevant": [
+        "GB51192",
+        "GB55014"
+      ]
+    },
+    {
+      "id": 37,
+      "query": "亲水平台栏杆1.05米是否足够安全？底部有可踩踏面时如何计算有效高度？",
+      "recall": 1.0,
+      "precision": 0.4,
+      "mrr": 0.5,
+      "ndcg": 0.693,
+      "retrieved": [
+        "GB55014",
+        "GB51192",
+        "GB50763",
+        "GB50420",
+        "GB50016"
+      ],
+      "relevant": [
+        "GB50763",
+        "GB51192"
+      ]
+    },
+    {
+      "id": 38,
+      "query": "无障碍坡道1:12和1:8坡度分别对应每米升高多少厘米？",
+      "recall": 1.0,
+      "precision": 0.5,
+      "mrr": 1.0,
+      "ndcg": 1.0,
+      "retrieved": [
+        "GB50763",
+        "GB50763",
+        "GB50763",
+        "GB51192",
+        "GB50763"
+      ],
+      "relevant": [
+        "GB50763"
+      ]
+    },
+    {
+      "id": 39,
+      "query": "儿童活动区种植夹竹桃、枸骨等有毒有刺植物，设计方是否担责？",
+      "recall": 1.0,
+      "precision": 0.5,
+      "mrr": 0.5,
+      "ndcg": 0.693,
+      "retrieved": [
+        "GB50420",
+        "GB51192",
+        "GB55014",
+        "GB51192",
+        "GB50763"
+      ],
+      "relevant": [
+        "GB51192",
+        "GB55014"
+      ]
+    },
+    {
+      "id": 40,
+      "query": "公园厕所污水可否直接接入市政污水管道？",
+      "recall": 1.0,
+      "precision": 0.333,
+      "mrr": 0.5,
+      "ndcg": 0.631,
+      "retrieved": [
+        "GB50420",
+        "GB50420",
+        "GB51192",
+        "GB51192",
+        "GB55014"
+      ],
+      "relevant": [
+        "GB51192"
+      ]
+    },
+    {
+      "id": 41,
+      "query": "下沉式绿地仅降低标高至路缘石以下十数厘米是否满足海绵要求？",
+      "recall": 0.5,
+      "precision": 0.5,
+      "mrr": 1.0,
+      "ndcg": 0.613,
+      "retrieved": [
+        "GB50420",
+        "CJJ37",
+        "CJJ37",
+        "CJJ37",
+        "GB50420"
+      ],
+      "relevant": [
+        "GB50420",
+        "GB55014"
+      ]
+    },
+    {
+      "id": 42,
+      "query": "什么是园林绿化工程项目？",
+      "recall": 0.5,
+      "precision": 0.5,
+      "mrr": 1.0,
+      "ndcg": 0.613,
+      "retrieved": [
+        "GB55014",
+        "GB55014",
+        "CJJ82",
+        "GB55014",
+        "GB55014"
+      ],
+      "relevant": [
+        "CJJT91",
+        "GB55014"
+      ]
+    },
+    {
+      "id": 43,
+      "query": "园林绿化工程项目规范中的强制性条文有哪些？",
+      "recall": 1.0,
+      "precision": 0.25,
+      "mrr": 0.25,
+      "ndcg": 0.431,
+      "retrieved": [
+        "CJJ82",
+        "GB50420",
+        "GB51192",
+        "GB55014",
+        "GB55014"
+      ],
+      "relevant": [
+        "GB55014"
+      ]
+    },
+    {
+      "id": 44,
+      "query": "场地频繁积水是否意味着标高与排水找坡方向存在矛盾？",
+      "recall": 0.5,
+      "precision": 0.5,
+      "mrr": 0.5,
+      "ndcg": 0.387,
+      "retrieved": [
+        "GB55014",
+        "GB51192",
+        "GB51192",
+        "GB51192",
+        "GB51192"
+      ],
+      "relevant": [
+        "GB50420",
+        "GB51192"
+      ]
+    },
+    {
+      "id": 45,
+      "query": "行道树树干中心至路缘石最小水平距离是多少？",
+      "recall": 1.0,
+      "precision": 0.5,
+      "mrr": 0.5,
+      "ndcg": 0.631,
+      "retrieved": [
+        "GB55014",
+        "CJJ37",
+        "GB55014",
+        "CJJ37",
+        "CJJ37"
+      ],
+      "relevant": [
+        "CJJ37"
+      ]
+    },
+    {
+      "id": 46,
+      "query": "什么情况下需要设置消防车道？",
+      "recall": 0.5,
+      "precision": 1.0,
+      "mrr": 1.0,
+      "ndcg": 1.0,
+      "retrieved": [
+        "GB50016",
+        "GB50016",
+        "GB50016",
+        "GB50016",
+        "GB50016"
+      ],
+      "relevant": [
+        "GB50016",
+        "GB55014"
+      ]
+    },
+    {
+      "id": 47,
+      "query": "风景园林基本术语标准主要包括哪些方面的术语定义？",
+      "recall": 1.0,
+      "precision": 0.333,
+      "mrr": 1.0,
+      "ndcg": 1.0,
+      "retrieved": [
+        "CJJT91",
+        "CJJT91",
+        "GB50420",
+        "GB51192",
+        "CJJT91"
+      ],
+      "relevant": [
+        "CJJT91"
+      ]
+    },
+    {
+      "id": 48,
+      "query": "居住区绿地率和城市绿地率的要求有什么不同？",
+      "recall": 0.5,
+      "precision": 0.25,
+      "mrr": 0.5,
+      "ndcg": 0.387,
+      "retrieved": [
+        "CJJ37",
+        "GB50420",
+        "GB55014",
+        "GB50420",
+        "CJJT91"
+      ],
+      "relevant": [
+        "GB50180",
+        "GB50420"
+      ]
+    },
+    {
+      "id": 49,
+      "query": "花岗岩铺装返碱泛白的原因及防治措施是什么？",
+      "recall": 1.0,
+      "precision": 0.0,
+      "mrr": 0.0,
+      "ndcg": 0.0,
+      "retrieved": [
+        "CJJ82",
+        "CJJ82",
+        "CJJ82",
+        "CJJ82",
+        "GB50420"
+      ],
+      "relevant": []
+    },
+    {
+      "id": 50,
+      "query": "园路夜间照明应如何确定路灯间距和光源功率？",
+      "recall": 1.0,
+      "precision": 0.5,
+      "mrr": 1.0,
+      "ndcg": 1.0,
+      "retrieved": [
+        "GB51192",
+        "GB50420",
+        "GB50420",
+        "GB51192",
+        "GB51192"
+      ],
+      "relevant": [
+        "GB51192"
+      ]
+    },
+    {
+      "id": 51,
+      "query": "行道树种植株距最小是多少？",
+      "recall": 1.0,
+      "precision": 0.333,
+      "mrr": 1.0,
+      "ndcg": 1.0,
+      "retrieved": [
+        "CJJ37",
+        "GB55014",
+        "GB51192",
+        "CJJ37",
+        "CJJ37"
+      ],
+      "relevant": [
+        "CJJ37"
+      ]
+    },
+    {
+      "id": 52,
+      "query": "行道树进入机动车道路面的枝下净高不应小于多少？",
+      "recall": 1.0,
+      "precision": 0.333,
+      "mrr": 1.0,
+      "ndcg": 1.0,
+      "retrieved": [
+        "CJJ37",
+        "CJJ37",
+        "GB55014",
+        "CJJ37",
+        "GB51192"
+      ],
+      "relevant": [
+        "CJJ37"
+      ]
+    },
+    {
+      "id": 53,
+      "query": "道路绿化中分车绿带设置海绵设施有什么要求？",
+      "recall": 1.0,
+      "precision": 0.5,
+      "mrr": 1.0,
+      "ndcg": 1.0,
+      "retrieved": [
+        "CJJ37",
+        "CJJ37",
+        "CJJ37",
+        "GB50420",
+        "CJJ37"
+      ],
+      "relevant": [
+        "CJJ37"
+      ]
+    },
+    {
+      "id": 54,
+      "query": "行道树分枝点高度和公园乔木枝下净空的要求有什么不同？",
+      "recall": 0.667,
+      "precision": 0.5,
+      "mrr": 1.0,
+      "ndcg": 0.765,
+      "retrieved": [
+        "CJJ37",
+        "GB51192",
+        "CJJ37",
+        "GB55014",
+        "CJJ82"
+      ],
+      "relevant": [
+        "GB50420",
+        "GB51192",
+        "CJJ37"
+      ]
+    },
+    {
+      "id": 55,
+      "query": "城市绿地率和居住区绿地率要求各是多少？为什么不同？",
+      "recall": 0.5,
+      "precision": 0.25,
+      "mrr": 0.5,
+      "ndcg": 0.387,
+      "retrieved": [
+        "GB55014",
+        "GB50420",
+        "CJJ37",
+        "CJJT91",
+        "GB50420"
+      ],
+      "relevant": [
+        "GB50420",
+        "GB50180"
+      ]
+    },
+    {
+      "id": 56,
+      "query": "什么是居住街坊？",
+      "recall": 0.5,
+      "precision": 1.0,
+      "mrr": 1.0,
+      "ndcg": 1.0,
+      "retrieved": [
+        "GB50180",
+        "GB50180",
+        "GB50180",
+        "GB50180",
+        "GB50180"
+      ],
+      "relevant": [
+        "CJJT91",
+        "GB50180"
+      ]
+    },
+    {
+      "id": 57,
+      "query": "风景园林中的竖向设计是什么意思？",
+      "recall": 1.0,
+      "precision": 0.333,
+      "mrr": 0.5,
+      "ndcg": 0.631,
+      "retrieved": [
+        "GB50420",
+        "CJJT91",
+        "GB51192",
+        "CJJT91",
+        "GB51192"
+      ],
+      "relevant": [
+        "CJJT91"
+      ]
+    },
+    {
+      "id": 58,
+      "query": "游人容量的定义和计算公式是什么？",
+      "recall": 1.0,
+      "precision": 0.667,
+      "mrr": 1.0,
+      "ndcg": 1.0,
+      "retrieved": [
+        "GB51192",
+        "GB51192",
+        "CJJT91",
+        "GB51192",
+        "GB55014"
+      ],
+      "relevant": [
+        "CJJT91",
+        "GB51192"
+      ]
+    },
+    {
+      "id": 59,
+      "query": "园林绿化工程项目规范中关于植物选择有什么强制要求？",
+      "recall": 1.0,
+      "precision": 0.333,
+      "mrr": 0.5,
+      "ndcg": 0.631,
+      "retrieved": [
+        "CJJ37",
+        "GB55014",
+        "CJJ82",
+        "CJJ37",
+        "CJJ37"
+      ],
+      "relevant": [
+        "GB55014"
+      ]
+    },
+    {
+      "id": 60,
+      "query": "园林绿化施工验收和公园设计对苗木质量的要求有什么异同？",
+      "recall": 0.5,
+      "precision": 1.0,
+      "mrr": 1.0,
+      "ndcg": 1.0,
+      "retrieved": [
+        "CJJ82",
+        "CJJ82",
+        "CJJ82",
+        "CJJ82",
+        "CJJ82"
+      ],
+      "relevant": [
+        "CJJ82",
+        "GB51192"
+      ]
+    }
+  ]
+}

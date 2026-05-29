@@ -259,7 +259,7 @@ def init_session():
 
 
 def check_model_cache() -> bool:
-    model_path = project_root / "models" / "BAAI" / "bge-m3"
+    model_path = project_root / "models" / "BAAI" / "bge-small-zh-v1___5"
     required = ["config.json", "pytorch_model.bin", "tokenizer.json"]
     if not model_path.exists():
         return False
@@ -295,7 +295,7 @@ def main():
         with st.status("正在检查系统状态...", expanded=True) as status:
             # Check model
             model_ok = check_model_cache()
-            st.write("BGE-M3 模型: " + ("已缓存" if model_ok else "未下载"))
+            st.write("Embedding 模型: " + ("已缓存" if model_ok else "未下载"))
             # Check DB
             db_ok = False
             try:

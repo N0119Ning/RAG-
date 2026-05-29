@@ -39,7 +39,7 @@ def _abs(path: str) -> str:
 class KnowledgeBase:
     def __init__(
         self,
-        collection_name: str = "ygt_design_standards",
+        collection_name: str = "ygt_small_test",
         persist_directory: str = "./data/chroma_db",
         pdf_dir: str = "./data/standards",
     ):
