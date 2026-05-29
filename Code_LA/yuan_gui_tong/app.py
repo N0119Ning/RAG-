@@ -596,6 +596,15 @@ def main():
 
 
 def load_and_build_kb():
+    try:
+        from rag.pdf_parser import HAS_FITZ
+        if not HAS_FITZ:
+            st.warning("线上版不支持初始化知识库，请在本地构建后上传。")
+            return
+    except ImportError:
+        st.warning("线上版不支持初始化知识库，请在本地构建后上传。")
+        return
+
     st.session_state.kb_building = True
     st.session_state.progress_log = []
 

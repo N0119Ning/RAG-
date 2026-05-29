@@ -4,10 +4,21 @@ import os
 os.environ.setdefault("FLAGS_use_mkldnn", "0")
 
 import re
-import fitz
 from pathlib import Path
 from typing import List
-from paddleocr import PaddleOCR
+
+try:
+    import fitz
+    HAS_FITZ = True
+except ImportError:
+    HAS_FITZ = False
+
+try:
+    from paddleocr import PaddleOCR
+    HAS_OCR = True
+except ImportError:
+    HAS_OCR = False
+    PaddleOCR = None
 
 
 class ParsedDocument:
@@ -77,6 +88,8 @@ class PDFParser:
         self._ocr = None
 
     def _get_ocr(self):
+        if not HAS_OCR:
+            return None
         if self._ocr is None:
             self._ocr = PaddleOCR(use_angle_cls=True, lang="ch")
         return self._ocr
@@ -126,6 +139,8 @@ class PDFParser:
                                   total_pages=cached_text.count("## 第"),
                                   text_chars=total_chinese)
 
+        if not HAS_FITZ:
+            raise RuntimeError("PyMuPDF not available. PDF parsing disabled in online mode.")
         doc = fitz.open(str(pdf_path))
         total_pages = len(doc)
         ocr = self._get_ocr()
